@@ -2,7 +2,7 @@
 ## How to run the project
 ### To run front-end
 ```
-cd auth
+cd auth-client
 npm install
 npm start
 ```
@@ -12,3 +12,4 @@ cd auth-server
 npm install
 npm start
 ```
+### Now Go to [link](http://localhost:3000)
