@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Login from "./components/Login.component";
 import Register from "./components/Register.component";
 import Home from "./components/Home.component";
-// import Login from "./components/Login";
-// import Register from "./components/Register";
-// import Home from "./components/Home";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -52,7 +49,11 @@ function App() {
             isLoggedIn ? (
               <Home onLogout={handleLogout} />
             ) : (
-              <p>Please log in to access this page.</p>
+              <>
+                <p>Please log in to access this page.</p>
+                <Link to="/login">Login</Link>{" "}
+                <Link to={"/register"}>Register</Link>
+              </>
             )
           }
         />
