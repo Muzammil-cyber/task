@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,7 +24,7 @@ const Register = () => {
         password: password,
       });
       setError(null);
-      redirect("/login");
+      navigate("/login");
     } catch (error) {
       setError(error.response.data.message || "Registration failed");
     }
