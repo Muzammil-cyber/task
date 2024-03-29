@@ -20,6 +20,15 @@ db.connect((err) => {
     return;
   }
   console.log("Connected to database");
+  db.query(
+    "CREATE TABLE IF NOT EXISTS users (email TEXT UNIQUE NOT NULL, password TEXT NOT NULL)"
+  )
+    .then(() => {
+      console.log("Table created");
+    })
+    .catch((err) => {
+      console.error("Error creating table", err);
+    });
 });
 
 const user = {
@@ -72,8 +81,6 @@ app.post("/api/login", async (req, res) => {
 // Registration route
 app.post("/api/register", async (req, res) => {
   const { email, password } = req.body;
-  console.log("email: ", email);
-  console.log("pass: ", password);
 
   try {
     const { rows } = await user.findByEmail(email);
